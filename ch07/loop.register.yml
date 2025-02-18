@@ -1,0 +1,13 @@
+---
+- hosts: localhost #ansible_server임
+  tasks:
+    - name: loop echo test
+      ansible.builtin.shell: "echo 'i can speak {{ item }}'"
+      loop:
+        - Korean
+        - English
+      register: result # register 없으면 결과 출력되고 그냥 작업끝남.. 저장안됨
+    
+    - name: Show result
+      ansible.builtin.debug:
+        var: result 
